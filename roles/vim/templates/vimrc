@@ -88,10 +88,10 @@ set scrolloff=7
 nmap <C-n> :NERDTreeToggle<CR>
 
 " toogle matches
-"nmap <C-m> :set hls!<CR>
+nmap <C-h> :set hls!<CR>
 
 " toogle invisible character
-nmap <C-h> :set list!<CR>
+nmap <C-i> :set list!<CR>
 
 " emacs C-a, C-e
 nmap <C-a> 0
