@@ -1,0 +1,100 @@
+# Functions to help us manage paths.  Second argument is the name of the
+# path variable to be modified (default: PATH)
+pathremove () {
+    local IFS=':'
+    local NEWPATH
+    local DIR
+    local PATHVARIABLE=${2:-PATH}
+    for DIR in ${!PATHVARIABLE} ; do
+        if [ "$DIR" != "$1" ] ; then
+            NEWPATH=${NEWPATH:+$NEWPATH:}$DIR
+        fi
+    done
+    export $PATHVARIABLE="$NEWPATH"
+}
+
+pathprepend () {
+    pathremove $1 $2
+    local PATHVARIABLE=${2:-PATH}
+    export $PATHVARIABLE="$1${!PATHVARIABLE:+:${!PATHVARIABLE}}"
+}
+
+pathappend () {
+    pathremove $1 $2
+    local PATHVARIABLE=${2:-PATH}
+    export $PATHVARIABLE="${!PATHVARIABLE:+${!PATHVARIABLE}:}$1"
+}
+
+# home brew
+alias brew='PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin brew'
+
+# phpbrew
+if [ -f "$HOME/.phpbrew/bashrc" ] ; then
+    source $HOME/.phpbrew/bashrc
+fi
+
+# npm from homebrew
+pathprepend "/usr/local/share/npm/bin"
+
+# rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+# ~/apps
+export ANT_HOME="$HOME/apps/apache-ant"
+export M2_HOME="$HOME/apps/apache-maven"
+
+pathprepend "$M2_HOME/bin"
+pathprepend "$ANT_HOME/bin"
+
+
+# go path
+export GOPATH="$HOME/.gocode"
+
+
+# ~/bin
+pathprepend "$HOME/bin"
+
+# Now to clean up
+unset pathremove pathprepend pathappend
+
+# GPG always wants to know what TTY it's running on.
+export GPG_TTY=`tty`
+
+
+# Editor
+export EDITOR="/usr/bin/vim -f"
+
+
+# Tips and Tricks
+export CDPATH=.:~
+#export HISTIGNORE="&:ls:ls *:[bf]g:exit"
+
+
+if [[ ${EUID} == 0 ]] ; then
+    PS1='\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
+else
+    #PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \W \$\[\033[00m\] '
+    PS1='\[\033[01;32m\]π\[\033[01;34m\] \W \$\[\033[00m\] '
+fi
+
+alias ls='ls -G'
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+
+# bash_completion
+for completion in "/usr/local/etc/bash_completion.d/*-completion.bash"
+do
+    source $completion
+done
+
+# ve
+complete -o bashdefault -o default -o nospace -c ve
+
+# git-ps1
+if [ -x "$HOME/bin/git-ps1.sh" ]; then
+    PS1="$PS1\$($( cat $HOME/bin/git-ps1.sh ))"
+fi

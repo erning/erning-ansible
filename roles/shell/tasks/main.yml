@@ -1,0 +1,14 @@
+---
+---
+- name: ensure ~/.bin directory is ready
+  file: path=~/bin
+        state=directory
+        recurse=yes
+
+- name: configure .bashrc
+  template: src=bashrc
+            dest=~/.bashrc
+
+- name: configure .bash_profile
+  template: src=bash_profile
+            dest=~/.bash_profile

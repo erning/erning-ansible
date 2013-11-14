@@ -1,0 +1,57 @@
+---
+- name: ensure .vim directory is ready
+  file: path={{ item }}
+        state=directory
+        recurse=yes
+  with_items:
+    - ~/.vim/autoload
+    - ~/.vim/bundle
+
+- name: install pathogen.vim
+  get_url: url=https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+           dest=~/.vim/autoload/pathogen.vim
+
+- name: configure .vimrc
+  template: src=vimrc
+            dest=~/.vimrc
+
+- name: install vim-colors-solarized
+  git: repo=https://github.com/altercation/vim-colors-solarized.git
+       dest=~/.vim/bundle/vim-colors-solarized
+       update=no
+
+- name: install vim-tomorrow-theme
+  git: repo=https://github.com/chriskempson/vim-tomorrow-theme.git
+       dest=~/.vim/bundle/vim-tomorrow-theme
+       update=no
+
+- name: install vim-airline
+  git: repo=https://github.com/bling/vim-airline.git
+       dest=~/.vim/bundle/vim-airline
+       update=no
+
+- name: install ctrlp.vim
+  git: repo=https://github.com/kien/ctrlp.vim.git
+       dest=~/.vim/bundle/ctrlp.vim
+       update=no
+
+- name: install nerdtree
+  git: repo=https://github.com/scrooloose/nerdtree.git
+       dest=~/.vim/bundle/nerdtree
+       update=no
+
+- name: install vim-gitgutter
+  git: repo=https://github.com/airblade/vim-gitgutter.git
+       dest=~/.vim/bundle/vim-gitgutter
+       update=no
+
+- name: install vim-markdown
+  git: repo=https://github.com/plasticboy/vim-markdown.git
+       dest=~/.vim/bundle/vim-markdown
+       update=no
+
+- name: install asciidoc-vim
+  git: repo=https://github.com/dagwieers/asciidoc-vim.git
+       dest=~/.vim/bundle/asciidoc-vim
+       update=no
+

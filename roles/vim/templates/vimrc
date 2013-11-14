@@ -1,0 +1,113 @@
+
+call pathogen#infect()
+" call pathogen#helptags()
+
+"
+" common settings
+"
+set nocompatible
+
+filetype plugin on
+filetype indent on
+
+" default encoding
+set encoding=utf8
+set ffs=unix,dos,mac
+
+" no backup files
+set nobackup
+set nowb
+set noswapfile
+
+" by default we use 4 spaces as tab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smarttab
+
+" makefiles always use tab
+autocmd FileType make setlocal noexpandtab
+
+" auto and smart indent, wrap long line
+set autoindent
+set smartindent
+set wrap
+
+" incremental search, ignore case
+set incsearch
+set ignorecase
+set smartcase
+
+" status
+set laststatus=2
+
+
+"
+" syntax hightlight and color scheme
+"
+syntax on
+
+if has('gui_running')
+    set background=light
+    colorscheme solarized
+{% if ansible_os_family == 'Darwin' %}
+    set guifont=Menlo:h16
+{% endif %}
+else
+    set background=dark
+    colorscheme tomorrow-night-bright
+endif
+
+" show line number
+set nu
+
+" relative number {n}j {n}k
+set relativenumber
+au FocusLost * :set number
+au FocusGained * :set relativenumber
+
+" cursor
+if has("gui_running")
+    set cursorline
+    set cursorcolumn
+endif
+
+" invisible character
+set listchars=tab:▸-,eol:¬
+
+" scrolling margin
+set scrolloff=7
+
+
+"
+" mappings
+"
+
+" toggle nerdtree
+nmap <C-n> :NERDTreeToggle<CR>
+
+" toogle matches
+"nmap <C-m> :set hls!<CR>
+
+" toogle invisible character
+nmap <C-h> :set list!<CR>
+
+" emacs C-a, C-e
+nmap <C-a> 0
+imap <C-a> <ESC>0i
+nmap <C-e> $
+imap <C-e> <ESC>$i
+
+" w!! write as root
+cmap w!! %!sudo tee > /dev/null %
+
+
+"
+" others
+"
+
+let g:vim_markdown_folding_disabled=1
+set t_ti= t_te=
+
+
