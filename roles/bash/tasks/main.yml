@@ -1,5 +1,5 @@
 ---
-- name: ensure ~/.bin directory is ready
+- name: ensure ~/bin directory is ready
   file: path=~/bin
         state=directory
         recurse=yes

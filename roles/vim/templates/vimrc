@@ -51,7 +51,7 @@ syntax on
 if has('gui_running')
     set background=light
     colorscheme solarized
-{% if ansible_os_family == 'Darwin' %}
+{% if ansible_distribution == 'MacOSX' %}
     set guifont=Menlo:h16
 {% endif %}
 else

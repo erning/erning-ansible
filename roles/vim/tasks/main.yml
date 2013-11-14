@@ -15,7 +15,7 @@
 - name: install bundles
   git: repo={{ item.repo }}
        dest=~/.vim/bundle/{{ item.name }}
-       update={{ update_bundles }}
+       update={{ update_vim_bundles }}
   with_items: 
     - name: vim-colors-solarized
       repo: https://github.com/altercation/vim-colors-solarized.git

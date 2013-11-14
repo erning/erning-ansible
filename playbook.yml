@@ -1,7 +1,14 @@
 - hosts: 127.0.0.1
   connection: local
 
+  vars_files:
+    - ["vars/{{ ansible_os_family }}.yml", "vars/os_defaults.yml"]
+
+  vars:
+    - update_vim_bundles: no
+
   roles:
-    - shell
-    - role: vim
-      update_bundles: no
+    - bash
+    - vim
+    - git
+    - avatar

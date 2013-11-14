@@ -1,0 +1,4 @@
+---
+- name: configure .gitconfig
+  template: src=gitconfig
+            dest=~/.gitconfig
