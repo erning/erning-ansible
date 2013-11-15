@@ -1,0 +1,3 @@
+#!/bin/bash
+source "$HOME/apps/ansible/hacking/env-setup" -q
+PYENV_VERSION=2.7.5 exec "$ANSIBLE_HOME/bin/${0##/*/}" $@

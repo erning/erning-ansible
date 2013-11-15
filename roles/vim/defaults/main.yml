@@ -1,2 +1,3 @@
 ---
+# update the vim bundle to ensure we get the latest version
 update_vim_bundles: yes

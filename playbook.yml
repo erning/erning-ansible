@@ -2,13 +2,15 @@
   connection: local
 
   vars_files:
-    - ["vars/{{ ansible_os_family }}.yml", "vars/os_defaults.yml"]
+    - ["vars/{{ ansible_distribution }}.yml", "vars/os_defaults.yml"]
 
   vars:
     - update_vim_bundles: no
+    - force_download_bin_files: no
 
   roles:
     - bash
+    - bin
     - vim
     - git
     - avatar
