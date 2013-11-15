@@ -1,5 +1,4 @@
-- hosts: 127.0.0.1
-  connection: local
+- hosts: all
 
   vars_files:
     - ["vars/{{ ansible_distribution }}.yml", "vars/os_defaults.yml"]
@@ -8,9 +7,18 @@
     - update_vim_bundles: no
     - force_download_bin_files: no
 
+  pre_tasks:
+    - name: homebrew should be installed before other tasks
+      shell: command -v brew && touch ~/.homebrew-ready
+             creates=~/.homebrew-ready
+      when: ansible_distribution == 'MacOSX'
+
   roles:
     - bash
     - bin
-    - vim
     - git
+    - screen
+    - tmux
     - avatar
+    - role: terminal
+      when: ansible_distribution == 'MacOSX'

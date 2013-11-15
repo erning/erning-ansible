@@ -1,0 +1,14 @@
+---
+- name: ensure tmux is installed - MacOSX
+  homebrew: name=tmux
+            state=present
+  when: ansible_distribution == 'MacOSX'
+
+- name: ensure git is installed - Ubuntu
+  apt: name=tmux
+       state=present
+  when: ansible_distribution == 'Ubuntu'
+
+- name: configure .tmux.conf
+  template: src=tmux.conf
+            dest=~/.tmux.conf

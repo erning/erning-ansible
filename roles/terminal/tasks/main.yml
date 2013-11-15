@@ -1,0 +1,16 @@
+---
+- name: put files to remote
+  copy: src="{{ item }}"
+        dest="{{ ansible_env['TMPDIR'] }}/{{ item }}"
+  with_items:
+    - "Erning.terminal"
+    - "Tomorrow Night.terminal"
+
+- name: put script to remote
+  template: src=set-settings.applescript
+            dest="{{ ansible_env['TMPDIR'] }}/set-settings.applescript"
+
+- name: set terminal settings
+  shell: /usr/bin/osascript "{{ ansible_env['TMPDIR'] }}/set-settings.applescript" && touch ~/.terminal-ready
+         creates=~/.terminal-ready
+

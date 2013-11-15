@@ -1,0 +1,4 @@
+shell -/bin/bash
+startup_message off
+vbell off
+hardstatus alwayslastline '%{ck}%-w%{.kG}%n %t%{-}%+w %=%{.w}%{ck} %H, %M %d, %c'

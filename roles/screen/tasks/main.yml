@@ -1,0 +1,4 @@
+---
+- name: configure .screenrc
+  template: src=screenrc
+            dest=~/.screenrc

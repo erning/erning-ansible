@@ -25,6 +25,9 @@ pathappend () {
     export $PATHVARIABLE="${!PATHVARIABLE:+${!PATHVARIABLE}:}$1"
 }
 
+pathprepend "/usr/local/bin"
+pathprepend "/usr/local/sbin"
+
 # home brew
 alias brew='PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin brew'
 
@@ -76,8 +79,8 @@ export CDPATH=.:~
 if [[ ${EUID} == 0 ]] ; then
     PS1='\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
 else
-    #PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \W \$\[\033[00m\] '
-    PS1='\[\033[01;32m\]π\[\033[01;34m\] \W \$\[\033[00m\] '
+    PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \W \$\[\033[00m\] '
+    #PS1='\[\033[01;32m\]π\[\033[01;34m\] \W \$\[\033[00m\] '
 fi
 
 alias ls='ls -G'
@@ -86,10 +89,12 @@ alias mv='mv -i'
 alias cp='cp -i'
 
 # bash_completion
-for completion in "/usr/local/etc/bash_completion.d/*-completion.bash"
-do
-    source $completion
-done
+if [ -x "/usr/local/etc/bash_completion.d/" ]; then
+    for completion in "/usr/local/etc/bash_completion.d/*-completion.bash"
+    do
+        source $completion
+    done
+fi
 
 # ve
 complete -o bashdefault -o default -o nospace -c ve

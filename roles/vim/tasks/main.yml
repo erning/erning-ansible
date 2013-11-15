@@ -16,7 +16,7 @@
   git: repo={{ item.repo }}
        dest=~/.vim/bundle/{{ item.name }}
        update={{ update_vim_bundles }}
-  with_items: 
+  with_items:
     - name: vim-colors-solarized
       repo: https://github.com/altercation/vim-colors-solarized.git
     - name: vim-tomorrow-theme

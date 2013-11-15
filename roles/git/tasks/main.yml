@@ -1,4 +1,14 @@
 ---
+- name: ensure git is installed - MacOSX
+  homebrew: name=git
+            state=present
+  when: ansible_distribution == '---MacOSX'
+
+- name: ensure git is installed - Ubuntu
+  apt: name=git
+       state=present
+  when: ansible_distribution == 'Ubuntu'
+
 - name: configure .gitconfig
   template: src=gitconfig
             dest=~/.gitconfig
