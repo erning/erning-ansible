@@ -1,4 +1,4 @@
-# Ansible Playbooks for my Workstations
+# Ansible Playbooks
 
 The majority of these playbooks is to provision my development machines, including Mac OS X and Ubuntu.
 
