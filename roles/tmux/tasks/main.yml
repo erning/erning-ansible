@@ -4,11 +4,11 @@
             state=present
   when: ansible_distribution == 'MacOSX'
 
-- name: ensure git is installed - Ubuntu
+- name: ensure tmux is installed - Ubuntu
   apt: name=tmux
        state=present
   when: ansible_distribution == 'Ubuntu'
 
-- name: configure .tmux.conf
+- name: configure tmux
   template: src=tmux.conf
             dest=~/.tmux.conf

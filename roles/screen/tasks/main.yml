@@ -1,4 +1,9 @@
 ---
-- name: configure .screenrc
+- name: ensure screen is installed - Ubuntu
+  apt: name=screen
+       state=present
+  when: ansible_distribution == 'Ubuntu'
+
+- name: configure screen
   template: src=screenrc
             dest=~/.screenrc

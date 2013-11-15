@@ -1,2 +1,5 @@
 ---
-avatars_directory: ~/pictures/avatars
+force_download_bin_files: no
+update_ansible: no
+update_vim_bundles: no
+

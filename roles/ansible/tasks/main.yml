@@ -1,0 +1,25 @@
+---
+- name: ensure ~/apps directory is ready
+  file: path=~/apps
+        state=directory
+        recurse=yes
+
+- name: install ansible
+  git: repo=https://github.com/ansible/ansible.git
+       dest=~/apps/ansible
+       update={{ update_ansible }}
+
+- name: ensure ansible wrapper is ready
+  template: src=_ansible-wrapper
+            dest=~/bin/_ansible-wrapper
+            mode=0755
+
+- name: ensure ansible binaries are linked
+  file: src=~/bin/_ansible-wrapper
+        dest=~/bin/{{ item }}
+        state=link
+  with_items:
+    - ansible
+    - ansible-playbook
+    - ansible-pull
+    - ansible-doc

@@ -1,0 +1,3 @@
+---
+- name: set terminal settings
+  shell: /usr/bin/osascript "{{ ansible_env['TMPDIR'] }}/set-settings.applescript"

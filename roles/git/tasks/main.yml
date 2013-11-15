@@ -2,7 +2,7 @@
 - name: ensure git is installed - MacOSX
   homebrew: name=git
             state=present
-  when: ansible_distribution == '---MacOSX'
+  when: ansible_distribution == 'MacOSX'
 
 - name: ensure git is installed - Ubuntu
   apt: name=git

@@ -4,26 +4,13 @@
         state=directory
         recurse=yes
 
-- name: ensure ansible wrapper is ready
-  template: src=_ansible-wrapper
-            dest=~/bin/_ansible-wrapper
-            mode=0755
-
-- name: ensure ansible binaries are linked
-  file: src=~/bin/_ansible-wrapper
-        dest=~/bin/{{ item }}
-        state=link
-  with_items:
-    - ansible
-    - ansible-playbook
-
 - name: ensure ve is installed
   get_url: url=https://raw.github.com/erning/ve/master/ve
            dest=~/bin/ve
            mode=0755
            force={{ force_download_bin_files }}
 
-- name: ensure git-ps1 installed
+- name: ensure git-ps1 is installed
   get_url: url=https://raw.github.com/erning/git-ps1/master/git-ps1.sh
            dest=~/bin/git-ps1.sh
            mode=0755

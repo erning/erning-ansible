@@ -3,20 +3,16 @@
   vars_files:
     - ["vars/{{ ansible_distribution }}.yml", "vars/os_defaults.yml"]
 
-  vars:
-    - update_vim_bundles: no
-    - force_download_bin_files: no
-
   pre_tasks:
     - name: homebrew should be installed before other tasks
-      shell: command -v brew && touch ~/.homebrew-ready
-             creates=~/.homebrew-ready
+      shell: command -v brew creates=/usr/local/bin/brew
       when: ansible_distribution == 'MacOSX'
 
   roles:
     - bash
     - bin
     - git
+    - ansible
     - screen
     - tmux
     - avatar
