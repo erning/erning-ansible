@@ -1,5 +1,4 @@
 ---
-
 - name: ensure pyenv is installed - MacOSX
   homebrew: name=pyenv
             state=present
@@ -10,3 +9,19 @@
        dest=~/.pyenv
        update={{ update_pyenv }}
   when: ansible_distribution == 'Ubuntu'
+
+- name: install pythons
+  shell: "(pyenv versions | grep '{{ item }}') || pyenv install {{ item }}"
+  with_items:
+    - "2.7.5"
+    - "3.3.2"
+
+- name: install virtualenv
+  shell: "(PYENV_VERSION={{ item }} pip freeze | grep virtualenv) || PYENV_VERSION={{ item }} pip install virtualenv"
+  with_items:
+    - "2.7.5"
+    - "3.3.2"
+
+- name: set python3 as default
+  shell: pyenv global '3.3.2'
+

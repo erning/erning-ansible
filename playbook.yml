@@ -9,13 +9,13 @@
       when: ansible_distribution == 'MacOSX'
 
   roles:
-    - bash
-    - bin
-    - git
+#    - bash
+#    - bin
+#    - git
     - pyenv
     - ansible
-    - screen
-    - tmux
-    - avatar
-    - role: terminal
-      when: ansible_distribution == 'MacOSX'
+#    - screen
+#    - tmux
+#    - avatar
+#    - role: terminal
+#      when: ansible_distribution == 'MacOSX'

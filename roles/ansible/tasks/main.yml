@@ -4,10 +4,13 @@
         state=directory
         recurse=yes
 
-- name: install ansible
+- name: clone ansible
   git: repo=https://github.com/ansible/ansible.git
        dest=~/apps/ansible
        update={{ update_ansible }}
+
+- name: virtualenv for ansible
+  debug: msg="create .virtualenv and install paramiko jinja2 PyYAML"
 
 - name: ensure ansible wrapper is ready
   template: src=_ansible-wrapper
