@@ -1,0 +1,12 @@
+---
+
+- name: ensure pyenv is installed - MacOSX
+  homebrew: name=pyenv
+            state=present
+  when: ansible_distribution == 'MacOSX'
+
+- name: install pyenv from source
+  git: repo=https://github.com/yyuu/pyenv.git
+       dest=~/.pyenv
+       update={{ update_pyenv }}
+  when: ansible_distribution == 'Ubuntu'

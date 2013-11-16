@@ -12,6 +12,7 @@
     - bash
     - bin
     - git
+    - pyenv
     - ansible
     - screen
     - tmux

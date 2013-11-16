@@ -41,9 +41,17 @@ pathprepend "/usr/local/share/npm/bin"
 
 # rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+{% if ansible_distribution == 'Ubuntu' %}
+export RBENV_ROOT="$HOME/.rbenv"
+pathprepend "$RBENV_ROOT/bin"
+{% endif %}
 
 # pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+{% if ansible_distribution == 'Ubuntu' %}
+export PYENV_ROOT="$HOME/.pyenv"
+pathprepend "$PYENV_ROOT/bin"
+{% endif %}
 
 # ~/apps
 export ANT_HOME="$HOME/apps/apache-ant"
