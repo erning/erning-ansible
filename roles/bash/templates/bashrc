@@ -28,16 +28,18 @@ pathappend () {
 pathprepend "/usr/local/bin"
 pathprepend "/usr/local/sbin"
 
+{% if ansible_distribution == 'MacOSX' %}
 # home brew
 alias brew='PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin brew'
+
+# npm from homebrew
+pathprepend "/usr/local/share/npm/bin"
+{% endif %}
 
 # phpbrew
 if [ -f "$HOME/.phpbrew/bashrc" ] ; then
     source $HOME/.phpbrew/bashrc
 fi
-
-# npm from homebrew
-pathprepend "/usr/local/share/npm/bin"
 
 # rbenv
 {% if ansible_distribution == 'Ubuntu' %}
@@ -60,20 +62,20 @@ export M2_HOME="$HOME/apps/apache-maven"
 pathprepend "$M2_HOME/bin"
 pathprepend "$ANT_HOME/bin"
 
-
-# go path
-export GOPATH="$HOME/.gocode"
-
-
 # ~/bin
 pathprepend "$HOME/bin"
 
 # Now to clean up
 unset pathremove pathprepend pathappend
 
+# If not running interactively, set path only
+[ -z "$PS1" ] && return
+
+# go path
+export GOPATH="$HOME/.gocode"
+
 # GPG always wants to know what TTY it's running on.
 export GPG_TTY=`tty`
-
 
 # Editor
 export EDITOR="/usr/bin/vim -f"
@@ -94,11 +96,20 @@ else
 {% endif %}
 fi
 
+{% if ansible_distribution == 'MacOSX' %}
 alias ls='ls -G'
+{% endif %}
+{% if ansible_distribution == 'Ubuntu' %}
+alias ls='ls --color=auto'
+{% endif %}
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 
+{% if ansible_distribution == 'MacOSX' %}
 # bash_completion
 if [ -x "/usr/local/etc/bash_completion.d/" ]; then
     for completion in "/usr/local/etc/bash_completion.d/*-completion.bash"
@@ -106,6 +117,7 @@ if [ -x "/usr/local/etc/bash_completion.d/" ]; then
         source $completion
     done
 fi
+{% endif %}
 
 # ve
 complete -o bashdefault -o default -o nospace -c ve

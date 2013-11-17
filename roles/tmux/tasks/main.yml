@@ -5,7 +5,7 @@
   when: ansible_distribution == 'MacOSX'
 
 - name: ensure tmux is installed - Ubuntu
-  apt: name=tmux
+  apt: pkg=tmux
        state=present
   when: ansible_distribution == 'Ubuntu'
 

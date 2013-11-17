@@ -17,6 +17,7 @@
     - ansible
     - screen
     - tmux
-    - avatar
+    - role: avatar
+      when: ansible_distribution == 'MacOSX'
     - role: terminal
       when: ansible_distribution == 'MacOSX'

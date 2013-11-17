@@ -10,6 +10,18 @@
        update={{ update_pyenv }}
   when: ansible_distribution == 'Ubuntu'
 
+- name: ensure dependencies for python - Ubuntu
+  apt: pkg={{ item }}
+       state=present
+  with_items:
+    - build-essential
+    - libssl-dev
+    - zlib1g-dev
+    - libbz2-dev
+    - libreadline-dev
+    - libsqlite3-dev
+  when: ansible_distribution == 'Ubuntu'
+
 - name: install pythons
   shell: (pyenv versions | grep '{{ item }}') || pyenv install {{ item }}
          creates=~/.pyenv/versions/{{ item }}

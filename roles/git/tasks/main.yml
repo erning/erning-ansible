@@ -5,7 +5,7 @@
   when: ansible_distribution == 'MacOSX'
 
 - name: ensure git is installed - Ubuntu
-  apt: name=git
+  apt: pkg=git
        state=present
   when: ansible_distribution == 'Ubuntu'
 

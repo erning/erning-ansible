@@ -1,6 +1,6 @@
 ---
 - name: ensure screen is installed - Ubuntu
-  apt: name=screen
+  apt: pkg=screen
        state=present
   when: ansible_distribution == 'Ubuntu'
 
