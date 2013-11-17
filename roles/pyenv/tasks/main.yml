@@ -11,6 +11,7 @@
   when: ansible_distribution == 'Ubuntu'
 
 - name: ensure dependencies for python - Ubuntu
+  sudo: yes
   apt: pkg={{ item }}
        state=present
   with_items:

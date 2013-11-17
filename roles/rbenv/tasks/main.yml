@@ -1,0 +1,11 @@
+---
+- name: ensure rbenv is installed - MacOSX
+  homebrew: name=rbenv
+            state=present
+  when: ansible_distribution == 'MacOSX'
+
+- name: install rbenv from source
+  git: repo=https://github.com/sstephenson/rbenv.git
+       dest=~/.rbenv
+       update={{ update_rbenv }}
+  when: ansible_distribution == 'Ubuntu'

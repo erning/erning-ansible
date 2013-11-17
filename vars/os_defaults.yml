@@ -3,4 +3,4 @@ force_download_bin_files: no
 update_pyenv: no
 update_ansible: no
 update_vim_bundles: no
-
+update_rbenv: no

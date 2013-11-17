@@ -21,3 +21,4 @@
       when: ansible_distribution == 'MacOSX'
     - role: terminal
       when: ansible_distribution == 'MacOSX'
+    - rbenv
