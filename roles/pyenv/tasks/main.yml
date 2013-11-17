@@ -11,17 +11,20 @@
   when: ansible_distribution == 'Ubuntu'
 
 - name: install pythons
-  shell: "(pyenv versions | grep '{{ item }}') || pyenv install {{ item }}"
+  shell: (pyenv versions | grep '{{ item }}') || pyenv install {{ item }}
+         creates=~/.pyenv/versions/{{ item }}
   with_items:
     - "2.7.5"
     - "3.3.2"
 
 - name: install virtualenv
-  shell: "(PYENV_VERSION={{ item }} pip freeze | grep virtualenv) || PYENV_VERSION={{ item }} pip install virtualenv"
+  shell: (PYENV_VERSION={{ item }} pip freeze | grep virtualenv) || PYENV_VERSION={{ item }} pip install virtualenv
+         creates=~/.pyenv/versions/{{ item }}/bin/virtualenv
   with_items:
     - "2.7.5"
     - "3.3.2"
 
 - name: set python3 as default
-  shell: pyenv global '3.3.2'
+  copy: src=version
+        dest=~/.pyenv/version
 
