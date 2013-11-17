@@ -56,7 +56,7 @@ if has('gui_running')
 {% endif %}
 else
     set background=dark
-    colorscheme tomorrow-night-bright
+    colorscheme Tomorrow-Night-Bright
 endif
 
 " show line number
