@@ -4,8 +4,19 @@
             state=present
   when: ansible_distribution == 'MacOSX'
 
-- name: install rbenv from source
+- name: ensure ruby-build is installed - MacOSX
+  homebrew: name=ruby-build
+            state=present
+  when: ansible_distribution == 'MacOSX'
+
+- name: install rbenv from source - Ubuntu
   git: repo=https://github.com/sstephenson/rbenv.git
        dest=~/.rbenv
+       update={{ update_rbenv }}
+  when: ansible_distribution == 'Ubuntu'
+
+- name: install ruby-build from source - Ubuntu
+  git: repo=https://github.com/sstephenson/ruby-build.git
+       dest=~/.rbenv/plugins/ruby-build
        update={{ update_rbenv }}
   when: ansible_distribution == 'Ubuntu'
