@@ -33,6 +33,22 @@
       repo: https://github.com/plasticboy/vim-markdown.git
     - name: asciidoc-vim
       repo: https://github.com/dagwieers/asciidoc-vim.git
+    - name: vim-coffee-script
+      repo: https://github.com/kchmck/vim-coffee-script.git
+    - name: vim-golang
+      repo: https://github.com/jnwhiteh/vim-golang.git
+    - name: vim-haml
+      repo: https://github.com/tpope/vim-haml.git
+    - name: vim-less
+      repo: https://github.com/groenewege/vim-less.git
+    - name: nginx-vim-syntax
+      repo: https://github.com/evanmiller/nginx-vim-syntax.git
+    - name: Vim-Jinja2-Syntax
+      repo: https://github.com/Glench/Vim-Jinja2-Syntax.git
+    - name: vim-cucumber
+      repo: https://github.com/tpope/vim-cucumber.git
+    - name: vcl-vim-plugin
+      repo: https://github.com/smerrill/vcl-vim-plugin.git
 
 - name: configure .vimrc
   template: src=vimrc
