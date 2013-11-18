@@ -102,6 +102,10 @@ imap <C-a> <ESC>0i
 nmap <C-e> $
 imap <C-e> <ESC>$i
 
+" identation emulate
+vmap << <gv
+vmap >> >gv
+
 " w!! write as root
 cmap w!! %!sudo tee > /dev/null %
 
