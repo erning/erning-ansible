@@ -85,13 +85,16 @@ set scrolloff=7
 "
 
 " toggle nerdtree
-nmap <C-n> :NERDTreeToggle<CR>
+nmap <C-x><C-f> :NERDTreeToggle<CR>
 
-" toogle matches
-nmap <C-h> :set hls!<CR>
+" toggle matches
+nmap <C-x><C-m> :set hls!<CR>
 
-" toogle invisible character
-nmap <C-i> :set list!<CR>
+" toggle invisible character
+nmap <C-x><C-i> :set list!<CR>
+
+" toggle relative number
+nmap <C-x><C-n> :set relativenumber!<CR>
 
 " emacs C-a, C-e
 nmap <C-a> 0
