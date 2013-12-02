@@ -61,3 +61,4 @@
     - after/ftplugin/html.vim
     - after/ftplugin/ruby.vim
     - after/ftplugin/yaml.vim
+    - after/ftplugin/php.vim
