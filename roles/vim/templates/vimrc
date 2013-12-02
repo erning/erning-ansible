@@ -1,3 +1,4 @@
+set nocompatible
 
 call pathogen#infect()
 " call pathogen#helptags()
@@ -5,7 +6,9 @@ call pathogen#infect()
 "
 " common settings
 "
-set nocompatible
+set modeline
+set modelines=5
+set paste
 
 filetype plugin on
 filetype indent on
