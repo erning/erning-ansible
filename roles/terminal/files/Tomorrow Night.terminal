@@ -237,7 +237,7 @@
 	<key>name</key>
 	<string>Tomorrow Night 2 1</string>
 	<key>shellExitAction</key>
-	<integer>1</integer>
+	<integer>2</integer>
 	<key>type</key>
 	<string>Window Settings</string>
 	<key>useOptionAsMetaKey</key>

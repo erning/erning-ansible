@@ -9,5 +9,6 @@
   with_items:
     - "Erning.terminal"
     - "Tomorrow Night.terminal"
+    - "Tomorrow Night Bright.terminal"
   notify:
     - set terminal settings

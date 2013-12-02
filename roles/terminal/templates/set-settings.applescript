@@ -12,6 +12,12 @@ tell application "Terminal"
 	end try
 	open "{{ ansible_env['TMPDIR'] }}/Tomorrow Night.terminal"
 	
+	try
+		set setting to {settings set "Tomorrow Night Bright"}
+		delete setting
+	end try
+	open "{{ ansible_env['TMPDIR'] }}/Tomorrow Night Bright"
+        
 	set default settings to settings set "Erning"
 	set startup settings to settings set "Erning"
 	
