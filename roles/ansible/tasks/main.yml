@@ -40,3 +40,4 @@
     - ansible-playbook
     - ansible-pull
     - ansible-doc
+    - ansible-galaxy
