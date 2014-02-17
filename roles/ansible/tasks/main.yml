@@ -17,10 +17,10 @@
   shell: ~/apps/ansible/.virtualenv/bin/pip install {{ item.name }}
          creates=~/apps/ansible/.virtualenv/lib/python2.7/site-packages/{{ item.creates }}
   with_items:
-      - name: paramiko==1.12.0
+      - name: paramiko==1.12.2
         creates: paramiko-1.12.0-py2.7.egg-info
-      - name: Jinja2==2.7.1
-        creates: Jinja2-2.7.1-py2.7.egg-info
+      - name: Jinja2==2.7.2
+        creates: Jinja2-2.7.2-py2.7.egg-info
       - name: PyYAML==3.10
         creates: PyYAML-3.10-py2.7.egg-info
       - name: httplib2==0.8
