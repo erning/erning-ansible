@@ -58,7 +58,9 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 # ~/apps
 export ANT_HOME="$HOME/apps/apache-ant"
 export M2_HOME="$HOME/apps/apache-maven"
+export SCALA_HOME="$HOME/apps/scala"
 
+pathprepend "$SCALA_HOME/bin"
 pathprepend "$M2_HOME/bin"
 pathprepend "$ANT_HOME/bin"
 
