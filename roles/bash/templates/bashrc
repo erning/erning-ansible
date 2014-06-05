@@ -55,6 +55,11 @@ pathprepend "$PYENV_ROOT/bin"
 {% endif %}
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
+# nodenv
+export NODENV_ROOT="$HOME/.nodenv"
+pathprepend "$NODENV_ROOT/bin"
+if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
+
 # ~/apps
 export ANT_HOME="$HOME/apps/apache-ant"
 export M2_HOME="$HOME/apps/apache-maven"
@@ -159,6 +164,7 @@ openx() {
 }
 {% endif %}
 
+{% raw %}
 #
 # tmux
 #
@@ -196,3 +202,4 @@ if [[ -z "$TMUX" && -n "$SSH_CONNECTION" ]] && which tmux >& /dev/null; then
 
   exec tmux new-session -s ssh-$USER-$session_index -t ssh-$USER
 fi
+{% endraw %}

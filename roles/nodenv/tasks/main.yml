@@ -1,0 +1,10 @@
+---
+- name: install nodenv from source
+  git: repo=https://github.com/OiNutter/nodenv
+       dest=~/.nodenv
+       update={{ update_nodenv }}
+
+- name: install node-build from source - Ubuntu
+  git: repo=https://github.com/OiNutter/node-build.git
+       dest=~/.nodenv/plugins/node-build
+       update={{ update_nodenv }}
