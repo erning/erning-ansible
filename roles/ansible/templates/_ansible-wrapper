@@ -3,4 +3,4 @@ if [ -f "$HOME/apps/ansible/.virtualenv/bin/activate" ] ; then
     source "$HOME/apps/ansible/.virtualenv/bin/activate"
 fi
 source "$HOME/apps/ansible/hacking/env-setup" -q
-PYENV_VERSION=2.7.6 exec "$ANSIBLE_HOME/bin/${0##/*/}" $@
+PYENV_VERSION=2.7.6 exec "$ANSIBLE_HOME/bin/${0##/*/}" "$@"
