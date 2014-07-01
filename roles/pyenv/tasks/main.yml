@@ -27,15 +27,15 @@
   shell: (pyenv versions | grep '{{ item }}') || pyenv install {{ item }}
          creates=~/.pyenv/versions/{{ item }}
   with_items:
-    - "2.7.6"
-    - "3.3.4"
+    - "2.7.7"
+    - "3.4.1"
 
 - name: install virtualenv
   shell: (PYENV_VERSION={{ item }} pip freeze | grep virtualenv) || PYENV_VERSION={{ item }} pip install virtualenv
          creates=~/.pyenv/versions/{{ item }}/bin/virtualenv
   with_items:
-    - "2.7.6"
-    - "3.3.4"
+    - "2.7.7"
+    - "3.4.1"
 
 - name: set python3 as default
   copy: src=version
