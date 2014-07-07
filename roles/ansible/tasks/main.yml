@@ -11,7 +11,7 @@
        update={{ update_ansible }}
 
 - name: ensure virtualenv for ansible is installed
-  shell: PYENV_VERSION=2.7.6 virtualenv ~/apps/ansible/.virtualenv
+  shell: PYENV_VERSION=2.7.8 virtualenv ~/apps/ansible/.virtualenv
          creates=~/apps/ansible/.virtualenv/bin/activate
 
 - name: ensure dependencies for ansible is installed
