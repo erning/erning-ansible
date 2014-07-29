@@ -33,11 +33,6 @@ pathprepend "/usr/local/sbin"
 alias brew='PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin brew'
 {% endif %}
 
-# phpbrew
-if [ -f "$HOME/.phpbrew/bashrc" ] ; then
-    source $HOME/.phpbrew/bashrc
-fi
-
 # rbenv
 {% if ansible_distribution == 'Ubuntu' %}
 export RBENV_ROOT="$HOME/.rbenv"
