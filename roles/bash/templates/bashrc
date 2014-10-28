@@ -140,7 +140,7 @@ fi
 
 {% if ansible_distribution == 'MacOSX' %}
 # CocoaPods
-alias pod='RBENV_VERSION=2.0.0-p353 pod'
+alias pod='RBENV_VERSION=2.1.3 pod'
 openx() {
     if test -n "$(find . -maxdepth 1 -name '*.xcworkspace' -print -quit)"
     then
